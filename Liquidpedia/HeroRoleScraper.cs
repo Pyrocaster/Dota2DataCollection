@@ -49,7 +49,7 @@ namespace Liquidpedia
                     try
                     {
                         //get liquiedpedia resource
-                        response = client.GetAsync(baseUri + heroRoleUri + "blah").Result;
+                        response = client.GetAsync(baseUri + heroRoleUri).Result;
 
                         //if response is successful get data
                         if (response.IsSuccessStatusCode)
