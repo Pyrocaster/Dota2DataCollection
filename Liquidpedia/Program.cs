@@ -11,7 +11,6 @@ namespace Liquidpedia
             HeroRoleScraper p = new HeroRoleScraper();
             var directory = ConfigurationManager.AppSettings.Get("localXMLStore");
             p.GetData(directory);
-            //comment
         }
     }
 }
