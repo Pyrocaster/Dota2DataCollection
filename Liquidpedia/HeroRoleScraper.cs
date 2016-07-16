@@ -35,13 +35,16 @@ namespace Liquidpedia
         {
             using (HttpClient client = new HttpClient())
             {
-                string baseUri = ConfigurationManager.AppSettings.Get("LiquidpediaBaseURI");
-                string heroRoleUri = ConfigurationManager.AppSettings.Get("HeroRolesURI");
+                var baseUri = ConfigurationManager.AppSettings.Get("LiquidpediaBaseURI");
+                var heroRoleUri = ConfigurationManager.AppSettings.Get("HeroRolesURI");
+                var retryCount = int.Parse(ConfigurationManager.AppSettings.Get("RetryCount"));
+                var delay = int.Parse(ConfigurationManager.AppSettings.Get("DelayCount"));
+                var currentAttempt = 0;
+                var body = "Failure in getting a successful (200) response from Liquidpedia for hero role data. URL queried: " + baseUri + heroRoleUri + ". ";
+                var subject = "Liquidpedia Data Scrape Failure";
                 XDocument doc = null;
                 HttpResponseMessage response = null;
-                int currentAttempt = 0;
-                int retryCount = 1;
-                int delay = 1000;
+                
 
                 //Get liquidpeida page, attempt to retry with exponential delay for unsuccessful responses or transient failures
                 while (currentAttempt <= retryCount)
@@ -63,7 +66,7 @@ namespace Liquidpedia
                         {
                             //increment attempt number
                             currentAttempt++;
-
+                            body = body + "Additonal details: Unsucessful Responses";
                             //Add exponential delay
                             Thread.Sleep((int)(delay * (Math.Pow(currentAttempt, 2))));
                         }
@@ -72,7 +75,7 @@ namespace Liquidpedia
                     {
                         //increment attempt number
                         currentAttempt++;
-                       
+                        body = body + "Additonal details: Exceptions thrown, potential network failure";
                         //Add exponential delay
                         Thread.Sleep((int)(delay * (Math.Pow(currentAttempt, 2))));
                     }
@@ -83,7 +86,7 @@ namespace Liquidpedia
                     {
                         //send email that hero role generation has failed
                         Utilties u = new Utilties();
-                        u.SendEmail("Email Test", "Liquidpedia Failed");
+                        u.SendEmail(subject, body);
                         //log and throw exception
                         Exception ex = new Exception("Data retrieval from Liquidpedia failed, refer logs for more details");
                         throw ex;                      
