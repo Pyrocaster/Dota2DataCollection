@@ -1,0 +1,2 @@
+﻿1. Retry logic
+2. Automatic email notification on failure

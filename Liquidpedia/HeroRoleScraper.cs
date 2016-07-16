@@ -5,14 +5,19 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Threading;
+using System.Net.Mail;
+using SharedResources;
 
 namespace Liquidpedia
 {
-    class HeroRoleScraper
+    public class HeroRoleScraper
     {
         /// <summary>
-        /// Scrape wiki.teamliquid.net to and output XML with hero and hero role metadata in an easily consumable format, by default writes to XML directory found in App.config
+        /// Scrape wiki.teamliquid.net to and output XML with hero and hero role metadata in an easily consumable format.
+        /// Incorporates retry logic, and will send email to mailing list found in App.config if XML cannot be created.
         /// </summary>
+        /// <param name="outputDirectory">Directory to which HeroRole XML should be written, default found in App.config</param>
         public void GetData(string outputDirectory = null)
         {
             var doc = GetHeroRoleWebDoc();
@@ -23,7 +28,7 @@ namespace Liquidpedia
 
 
         /// <summary>
-        /// Returns an Xdocument that contains role data from liquidpedia
+        /// Returns an Xdocument that contains role data from liquidpedia. Will send email if data retrieval from website fails
         /// </summary>
         /// <returns></returns>
         private XDocument GetHeroRoleWebDoc()
@@ -33,19 +38,61 @@ namespace Liquidpedia
                 string baseUri = ConfigurationManager.AppSettings.Get("LiquidpediaBaseURI");
                 string heroRoleUri = ConfigurationManager.AppSettings.Get("HeroRolesURI");
                 XDocument doc = null;
+                HttpResponseMessage response = null;
+                int currentAttempt = 0;
+                int retryCount = 1;
+                int delay = 1000;
 
-                //Add retry logic here in the future
-                //Converting async call to synchronous to keep code simple and avoid unnessecary async behaviour in the main thread
-                HttpResponseMessage response = client.GetAsync(baseUri + heroRoleUri).Result;
-
-                if (response.IsSuccessStatusCode)
+                //Get liquidpeida page, attempt to retry with exponential delay for unsuccessful responses or transient failures
+                while (currentAttempt <= retryCount)
                 {
-                    var content = response.Content.ReadAsStringAsync().Result;
-                    doc = XDocument.Parse(content);
+                    try
+                    {
+                        //get liquiedpedia resource
+                        response = client.GetAsync(baseUri + heroRoleUri + "blah").Result;
+
+                        //if response is successful get data
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var content = response.Content.ReadAsStringAsync().Result;
+                            doc = XDocument.Parse(content);
+                            break;
+                        }
+                        //if response is not successful, increment current attempt and retry
+                        else
+                        {
+                            //increment attempt number
+                            currentAttempt++;
+
+                            //Add exponential delay
+                            Thread.Sleep((int)(delay * (Math.Pow(currentAttempt, 2))));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //increment attempt number
+                        currentAttempt++;
+                       
+                        //Add exponential delay
+                        Thread.Sleep((int)(delay * (Math.Pow(currentAttempt, 2))));
+                    }
+
+
+                    //if all retry attempts are over, log send email notification
+                    if (currentAttempt == retryCount)
+                    {
+                        //send email that hero role generation has failed
+                        Utilties u = new Utilties();
+                        u.SendEmail("Email Test", "Liquidpedia Failed");
+                        //log and throw exception
+                        Exception ex = new Exception("Data retrieval from Liquidpedia failed, refer logs for more details");
+                        throw ex;                      
+                    }
                 }
                 return doc;
             }
         }
+
 
 
 
