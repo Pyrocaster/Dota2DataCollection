@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liquidpedia", "Liquidpedia\
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedResources", "SharedResources\SharedResources.shproj", "{8AD2B816-7986-409D-9641-12E31D08B849}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liquidpedia_UnitTests", "Liquidpedia_UnitTests\Liquidpedia_UnitTests.csproj", "{01886C95-6BFB-44C3-85C7-5F905335A528}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedResources\SharedResources.projitems*{8ad2b816-7986-409d-9641-12e31d08b849}*SharedItemsImports = 13
@@ -27,6 +29,10 @@ Global
 		{5C3E7621-F899-458B-9C21-D020D2A0B99E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C3E7621-F899-458B-9C21-D020D2A0B99E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C3E7621-F899-458B-9C21-D020D2A0B99E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01886C95-6BFB-44C3-85C7-5F905335A528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01886C95-6BFB-44C3-85C7-5F905335A528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01886C95-6BFB-44C3-85C7-5F905335A528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01886C95-6BFB-44C3-85C7-5F905335A528}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
