@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Liquidpedia_UnitTests
+namespace SharedResources_Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class Utilities_Test
     {
         [TestMethod]
         public void TestMethod1()

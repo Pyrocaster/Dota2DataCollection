@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{01886C95-6BFB-44C3-85C7-5F905335A528}</ProjectGuid>
+    <ProjectGuid>{E0D1B17B-EE34-4450-8118-AF04B58527B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Liquidpedia_UnitTests</RootNamespace>
-    <AssemblyName>Liquidpedia_UnitTests</AssemblyName>
+    <RootNamespace>SharedResources_Tests</RootNamespace>
+    <AssemblyName>SharedResources_Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,8 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Utilities_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedResources_TestHelper\SharedResources_TestHelper.csproj">
+      <Project>{bda1a9aa-e31d-4583-9ce9-ce2a525fd1cd}</Project>
+      <Name>SharedResources_TestHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

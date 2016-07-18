@@ -4,9 +4,7 @@ using System.Xml.Linq;
 using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 using System.Threading;
-using System.Net.Mail;
 using SharedResources;
 
 namespace Liquidpedia

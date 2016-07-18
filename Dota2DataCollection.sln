@@ -9,10 +9,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liquidpedia", "Liquidpedia\
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedResources", "SharedResources\SharedResources.shproj", "{8AD2B816-7986-409D-9641-12E31D08B849}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liquidpedia_UnitTests", "Liquidpedia_UnitTests\Liquidpedia_UnitTests.csproj", "{01886C95-6BFB-44C3-85C7-5F905335A528}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liquidpedia_Tests", "Liquidpedia_Tests\Liquidpedia_Tests.csproj", "{7CC7D289-2C15-4C3A-8A2E-2681A5BF75A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedResources_TestHelper", "SharedResources_TestHelper\SharedResources_TestHelper.csproj", "{BDA1A9AA-E31D-4583-9CE9-CE2A525FD1CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedResources_Tests", "SharedResources_Tests\SharedResources_Tests.csproj", "{E0D1B17B-EE34-4450-8118-AF04B58527B7}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SharedResources\SharedResources.projitems*{bda1a9aa-e31d-4583-9ce9-ce2a525fd1cd}*SharedItemsImports = 4
 		SharedResources\SharedResources.projitems*{8ad2b816-7986-409d-9641-12e31d08b849}*SharedItemsImports = 13
 		SharedResources\SharedResources.projitems*{5c3e7621-f899-458b-9c21-d020d2a0b99e}*SharedItemsImports = 4
 	EndGlobalSection
@@ -29,10 +34,18 @@ Global
 		{5C3E7621-F899-458B-9C21-D020D2A0B99E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C3E7621-F899-458B-9C21-D020D2A0B99E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C3E7621-F899-458B-9C21-D020D2A0B99E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01886C95-6BFB-44C3-85C7-5F905335A528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01886C95-6BFB-44C3-85C7-5F905335A528}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01886C95-6BFB-44C3-85C7-5F905335A528}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01886C95-6BFB-44C3-85C7-5F905335A528}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CC7D289-2C15-4C3A-8A2E-2681A5BF75A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CC7D289-2C15-4C3A-8A2E-2681A5BF75A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CC7D289-2C15-4C3A-8A2E-2681A5BF75A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CC7D289-2C15-4C3A-8A2E-2681A5BF75A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA1A9AA-E31D-4583-9CE9-CE2A525FD1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA1A9AA-E31D-4583-9CE9-CE2A525FD1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA1A9AA-E31D-4583-9CE9-CE2A525FD1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA1A9AA-E31D-4583-9CE9-CE2A525FD1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0D1B17B-EE34-4450-8118-AF04B58527B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0D1B17B-EE34-4450-8118-AF04B58527B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0D1B17B-EE34-4450-8118-AF04B58527B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0D1B17B-EE34-4450-8118-AF04B58527B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

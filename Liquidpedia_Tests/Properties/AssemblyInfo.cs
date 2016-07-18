@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Liquidpedia_UnitTests")]
+[assembly: AssemblyTitle("Liquidpedia_Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Liquidpedia_UnitTests")]
+[assembly: AssemblyProduct("Liquidpedia_Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("01886c95-6bfb-44c3-85c7-5f905335a528")]
+[assembly: Guid("7cc7d289-2c15-4c3a-8a2e-2681a5bf75a0")]
 
 // Version information for an assembly consists of the following four values:
 //
